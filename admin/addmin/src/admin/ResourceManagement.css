@@ -1,0 +1,71 @@
+/* ResourceManagement.css */
+.resource-management-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .resource-management-header {
+    padding: 1.5rem;
+  }
+  
+  .resource-management-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+  }
+  
+  .resource-management-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+  }
+  
+  .resource-management-table th,
+  .resource-management-table td {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .resource-management-table th {
+    background-color: #f9fafb;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  
+  .resource-management-table tr:hover {
+    background-color: #f1f5f9;
+    transition: background-color 0.2s ease;
+  }
+  
+  .resource-management-table .action-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .resource-management-table .action-buttons button {
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+  
+  .resource-management-table .edit-button {
+    color: #2563eb;
+  }
+  
+  .resource-management-table .edit-button:hover {
+    color: #1d4ed8;
+  }
+  
+  .resource-management-table .delete-button {
+    color: #dc2626;
+  }
+  
+  .resource-management-table .delete-button:hover {
+    color: #b91c1c;
+  }
+  

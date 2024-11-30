@@ -1,0 +1,104 @@
+
+/* General modal styling */
+.resource-upload-form-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50; /* Ensures it appears above other content */
+  }
+  
+  .resource-upload-form-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resource-upload-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .resource-upload-form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .resource-upload-form-close-button {
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  /* .resource-upload-form-close-button:hover {
+    color: #444;
+  } */
+  
+  .resource-upload-form-input,
+  .resource-upload-form-select,
+  .resource-upload-form-file {
+    margin-top: 8px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .resource-upload-form-input:focus,
+  .resource-upload-form-select:focus,
+  .resource-upload-form-file:focus {
+    border-color: #9b59b6;
+    box-shadow: 0 0 0 4px rgba(155, 89, 182, 0.2);
+  }
+  
+  .resource-upload-form-file {
+    font-size: 0.875rem;
+  }
+  
+  .resource-upload-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  
+  .resource-upload-form-button {
+    padding: 12px 24px;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .resource-upload-form-button:hover {
+    background-color: #9b59b6;
+    color: white;
+  }
+  
+  .resource-upload-form-cancel-button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #333;
+  }
+  
+  .resource-upload-form-submit-button {
+    background-color: #9b59b6;
+    border: none;
+    color: white;
+  }
+  
+  .resource-upload-form-submit-button:hover {
+    background-color: #8e44ad;
+  }
+  
