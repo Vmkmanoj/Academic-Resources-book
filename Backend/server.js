@@ -9,6 +9,8 @@ const multer = require('multer');
 const path = require('path');
 
 const UserModel = require("./Modules/user");
+const User = require("./Modules/user");
+const authRegiser = require('./Routes/register')
 
 const PORT = 3000;
 const app = express();
@@ -20,73 +22,63 @@ mongoose.connect("mongodb+srv://vmkmano13:mano@kongu.lnpx7.mongodb.net/?retryWri
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
-// Login route with JWT generation
-// Login route with JWT generation
-app.post('/Login', async (req, res) => {
-    try {
-      const { name, password } = req.body;
-  
-      if (!name || !password) {
-        return res.status(400).json({ message: "Name and password are required", success: false });
-      }
-  
-      console.log("Login attempt:", name);
-  
-      // Check if user exists
-      const user = await UserModel.findOne({ name });
-      if (!user) {
-        return res.status(401).json({ message: "Invalid credentials", success: false });
-      }
-  
-      // Verify password using bcrypt
-      const isPasswordValid = bcrypt.compare(password, user.password); // Added await here
-      if (!isPasswordValid) {
-        return res.status(401).json({ message: "Invalid credentials", success: false });
-      }
-  
-      // Generate JWT token
-      const token = jwt.sign(
-        { userId: user._id, name: user.name, role: user.role },
-        process.env.JWT_SECRET, // Secret key from .env file
-        { expiresIn: '1h' } // Token expires in 1 hour
-      );
-  
-      // Send the token to the client
-      res.json({
-        message: "Login successful",
-        success: true,
-        token, // Send JWT token
-        userName: user.name
-      });
-    } catch (error) {
-      console.error("Error during login:", error);
-      res.status(500).json({ message: "Internal server error", success: false });
-    }
-  });
-  
+// const Username = ()=>{
 
-// Register route
-app.post('/Register', async (req, res) => {
+//   const user = new User({UserName:"Rohini",name:"Rohini24MCR@kongu.edu",password:"01-09-2003"},
+                          
+//   )
+
+//   user.save()
+
+
+// }
+
+// Username();
+
+app.use('/api/Register',authRegiser)
+
+app.post('/Login', async (req, res) => {
   try {
     const { name, password } = req.body;
 
     if (!name || !password) {
-      return res.status(400).json({ message: "Name and password are required" });
+      return res.status(400).json({ message: "Name and password are required", success: false });
     }
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("Login attempt:", name);
 
-    // Save the user to the database
-    const newUser = new UserModel({ name, password: hashedPassword });
-    await newUser.save();
+    // Check if user exists
+    const user = await UserModel.findOne({ name });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials", success: false });
+    }
 
-    res.status(201).json({ message: "User registered successfully" });
+    // Verify password
+    const isPasswordValid = bcrypt.compare(password, user.password); // Added await
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid credentials", success: false });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user._id, name: user.name, Username: user.UserName, role: user.role },
+      process.env.JWT_SECRET, // Secret key from .env file
+      { expiresIn: '1h' } // Token expires in 1 hour
+    );
+
+    // Send the token and Username to the client
+    res.json({
+      message: "Login successful",
+      success: true,
+      token, // Send JWT token
+      userName: user.UserName // Include UserName in response
+    });
   } catch (error) {
-    console.error("Error during registration:", error);
-    res.status(500).json({ message: "Internal server error" });
+    console.error("Error during login:", error);
+    res.status(500).json({ message: "Internal server error", success: false });
   }
 });
+  
 
 // Middleware to verify the JWT token on protected routes
 const verifyToken = (req, res, next) => {

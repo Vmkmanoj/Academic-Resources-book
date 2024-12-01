@@ -5,7 +5,7 @@ export const CrouseData = [
       "url": "https://techcrunch.com",
       "description": "TechCrunch is a leading technology news and information site.",
       "category": "Technology",
-      "imageUrl": "https://via.placeholder.com/200x100?text=TechCrunch"
+      "imageUrl": "https://steveblank.com/wp-content/uploads/2022/04/techcrunch-logo.jpg"
     },
     {
       "id": 2,
@@ -13,7 +13,7 @@ export const CrouseData = [
       "url": "https://www.w3schools.com",
       "description": "W3Schools offers tutorials and references on web development technologies.",
       "category": "Education",
-      "imageUrl": "https://via.placeholder.com/200x100?text=W3Schools"
+      "imageUrl": "https://avatars.githubusercontent.com/u/77673807?v=4"
     },
     {
       "id": 3,
@@ -21,7 +21,7 @@ export const CrouseData = [
       "url": "https://stackoverflow.com",
       "description": "StackOverflow is a question and answer site for professional and enthusiast programmers.",
       "category": "Community",
-      "imageUrl": "https://via.placeholder.com/200x100?text=StackOverflow"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Stack_Overflow_icon.svg"
     },
     {
       "id": 4,
@@ -29,7 +29,7 @@ export const CrouseData = [
       "url": "https://github.com",
       "description": "GitHub is a platform for version control and collaboration, allowing multiple people to work on projects at once.",
       "category": "Development",
-      "imageUrl": "https://via.placeholder.com/200x100?text=GitHub"
+      "imageUrl": "https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png"
     },
     {
       "id": 5,
@@ -37,7 +37,7 @@ export const CrouseData = [
       "url": "https://www.freecodecamp.org",
       "description": "freeCodeCamp is an open-source community that helps you learn to code.",
       "category": "Education",
-      "imageUrl": "https://via.placeholder.com/200x100?text=freeCodeCamp"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png"
     },
     {
       "id": 6,
@@ -45,7 +45,7 @@ export const CrouseData = [
       "url": "https://medium.com",
       "description": "Medium is a platform for writers, bloggers, and journalists to publish their stories.",
       "category": "Blogging",
-      "imageUrl": "https://via.placeholder.com/200x100?text=Medium"
+      "imageUrl": "https://www.pinpng.com/pngs/m/66-666471_terms-can-become-hard-to-define-when-they.png"
     },
     {
       "id": 7,
@@ -53,7 +53,7 @@ export const CrouseData = [
       "url": "https://developer.mozilla.org",
       "description": "MDN is a resource for developers, with documentation, tutorials, and more.",
       "category": "Documentation",
-      "imageUrl": "https://via.placeholder.com/200x100?text=MDN"
+      "imageUrl": "https://miro.medium.com/v2/resize:fit:600/1*cjguYFzj66gVSqMQpxLEAw.png"
     },
     {
       "id": 8,
@@ -61,7 +61,7 @@ export const CrouseData = [
       "url": "https://codepen.io",
       "description": "CodePen is an HTML, CSS, and JavaScript code editor for front-end developers.",
       "category": "Development",
-      "imageUrl": "https://via.placeholder.com/200x100?text=CodePen"
+      "imageUrl": "https://pbs.twimg.com/profile_images/923214541290221569/dCMZxkwz_400x400.jpg"
     },
     {
       "id": 9,
@@ -69,7 +69,7 @@ export const CrouseData = [
       "url": "https://dev.to",
       "description": "Dev.to is a platform where programmers share and discuss code.",
       "category": "Community",
-      "imageUrl": "https://via.placeholder.com/200x100?text=Dev.to"
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/5969/5969113.png"
     },
     {
       "id": 10,
@@ -77,7 +77,7 @@ export const CrouseData = [
       "url": "https://hackernoon.com",
       "description": "Hackernoon is a platform where tech professionals share stories, news, and ideas.",
       "category": "Technology",
-      "imageUrl": "https://via.placeholder.com/200x100?text=Hackernoon"
+      "imageUrl": "https://storage.googleapis.com/accesswire/logos/subaccounts/39014.jpeg?v=12"
     }
   ]
   

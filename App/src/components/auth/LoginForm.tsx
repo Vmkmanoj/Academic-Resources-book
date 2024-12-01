@@ -1,14 +1,26 @@
 import { useState } from 'react';
-import { Form, Input, Button, Alert, message } from "antd";
+import { Form, Input, Button, Alert, message, Segmented } from "antd";
 import { Contact, GraduationCap} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../../context/AuthContext';
+
+import { Register } from './Register';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [logOrRegister, setLogOrRegister] = useState("Login");
   const navigate = useNavigate();
+  
+
+  const handlelogOrRegiser = (value: string)=>{
+
+    setLogOrRegister(value)
+
+  }
+
+  console.log(logOrRegister);
 
 
 
@@ -21,15 +33,16 @@ export const LoginForm = () => {
         },
         body: JSON.stringify(values),
       });
-  
+
       const data = await response.json();
-      console.log(data);
+      console.log(data.userName);
+   
   
       if (data.success) {
         // Store the JWT token and username in localStorage
         localStorage.setItem("token", data.token);
-        // localStorage.setItem("userName", data.userName); // Store username
-        console.log(data.useName)
+        localStorage.setItem("userName", data.userName); // Store username
+        console.log(data)
   
         // Redirect user to home page
         navigate("/Home"); 
@@ -44,7 +57,10 @@ export const LoginForm = () => {
 
 
   return (
-    <div
+
+    <>
+<Segmented options={["Login","Register"]} value={logOrRegister} onChange={handlelogOrRegiser}></Segmented>
+{logOrRegister === "Login" ? (<> <div
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50"
       style={{
         minHeight: "100vh",
@@ -55,6 +71,7 @@ export const LoginForm = () => {
           "linear-gradient(to bottom right, #f3e8ff 0%, #ebf4ff 100%)",
       }}
     >
+      
       <div
         style={{
           background: "#fff",
@@ -152,6 +169,8 @@ export const LoginForm = () => {
           </Form.Item>
         </Form>
       </div>
-    </div>
+    </div></>) : <Register></Register> }
+   
+    </>
   );
 };

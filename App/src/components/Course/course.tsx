@@ -1,5 +1,6 @@
 import React from "react";
 import { CrouseData } from "../Dummydata/Crouse"; // Make sure the path is correct
+import { Button } from "antd";
 
 const Course = () => {
   return (
@@ -17,14 +18,14 @@ const Course = () => {
             />
             <h3 className="text-xl font-semibold text-gray-800">{website.title}</h3>
             <p className="text-gray-600 mb-2">{website.category}</p>
-            <a
+            <Button type="link"><a
               href={website.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline mb-2 inline-block"
             >
               Visit Website
-            </a>
+            </a></Button>
             <div className="text-gray-700 mt-4">
               <p><strong>Description:</strong> {website.description}</p>
             </div>
