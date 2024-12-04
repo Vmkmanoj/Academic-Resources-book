@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
     const newUser = new User({
       Username,
       name,
+      department,
       password: hashedPassword,
     });
 
