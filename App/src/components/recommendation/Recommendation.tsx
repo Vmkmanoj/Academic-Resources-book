@@ -7,7 +7,7 @@ const justifyOptions = [
   'Youtube',
   'Senior',
   'Course',
-  'Language',
+  'Test',
 ];
 
 interface RecommendationProps {

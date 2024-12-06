@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Button, Form, Input, Select } from "antd";
 import { GraduationCap } from 'lucide-react';
 
@@ -88,7 +88,6 @@ export const Register = () => {
               name="Username" rules={[{ required: true, message: "Please enter your name" }, { type: "string", message: "Enter valid name" }]}
             >
               <Input></Input>
-
 
             </Form.Item>
 
