@@ -1,0 +1,13 @@
+{
+    "version": "independent",
+    "npmClient": "npm",
+    "command": {
+        "bootstrap": {
+            "hoist": true
+        }
+    },
+    "packages": [
+        "web-app",
+        "quizz-app"
+    ]
+}

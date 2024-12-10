@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5", // Ensures ES5 output
+    "module": "esnext", // Use modern module system
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Ensure the output directory is correct
+    "baseUrl": ".",
+    "paths": {
+      "@kongu/quizz-app": [
+        "../quizz-app/src"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "ES5", // To ensure compatibility with older environments (you can change to ES6 or higher if needed)
+    "module": "ESNext", // Ensure it outputs ES module code
+    "moduleResolution": "node", // For Node.js-style module resolution
+    "declaration": true, // Generate declaration files
+    "declarationDir": "./dist", // Output for declaration files
+    "outDir": "./dist", // Output for compiled JavaScript files
+    "esModuleInterop": true, // For better compatibility with CommonJS and ESM modules
+    "skipLibCheck": true, // To speed up build (can be turned off if strict checking is needed)
+    "sourceMap": true // To generate sourcemaps
+  },
+  "include": [
+    "src/**/*"
+  ], // Include all source files
+  "exclude": [
+    "node_modules"
+  ] // Exclude node_modules folder
+}

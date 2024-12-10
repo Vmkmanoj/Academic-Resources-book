@@ -1,0 +1,19 @@
+{
+  "name": "@kongu/quizz-app",
+  "version": "0.0.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": "dist/esm/index.js",
+      "require": "dist/cjs/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --module commonjs --target es5 --outDir dist/cjs && tsc --module esnext --target es5 --outDir dist/esm"
+  }
+}

@@ -7,6 +7,7 @@ import { Button, Flex, Segmented } from 'antd';
 import "./ResourceLisst.css"
 import { MCAData } from '../Dummydata/stubject'; // Ensure MCAData is correctly imported
 import { EyeOutlined, FilePdfFilled } from '@ant-design/icons';
+import { QuizzApp } from "@kongu/quizz-app";
 
 const ResourceList = () => {
   const [path, setPath] = React.useState<string>('Subject'); // State for path
@@ -18,7 +19,6 @@ const ResourceList = () => {
   return (
     <>
       <Recommendation path={path} setPath={setPath} />
-
       {path === 'Subject' ? (
         <>
           {/* Section Selector */}
@@ -28,7 +28,6 @@ const ResourceList = () => {
             onChange={(value) => setSection(value as string)}
             className="mt-10"
           />
-
           {/* Animated Grid */}
           <div className="relative mt-8">
             <CSSTransition
@@ -42,11 +41,11 @@ const ResourceList = () => {
                     key={subject.id}
                     className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                   >
-                   
+
                     <h3 className="text-lg font-bold text-gray-800">{subject.name}</h3>
-                   
-                   
-                  
+
+
+
                     <p className="text-gray-600 mb-4">{subject.description}</p>
                     <a
                       href={subject.downloadUrl}
@@ -54,7 +53,7 @@ const ResourceList = () => {
                       rel="noopener noreferrer"
                       className="text-blue-500 underline"
                     >
-                    <FilePdfFilled></FilePdfFilled><Button type='link'> Download</Button> 
+                      <FilePdfFilled></FilePdfFilled><Button type='link'> Download</Button>
                     </a>
                     <EyeOutlined className='cursor-pointer'></EyeOutlined>
                   </div>
@@ -78,6 +77,14 @@ const ResourceList = () => {
           <Course />
         </div>
       )}
+
+      {/* Course Section */}
+      {path === 'Test' && (
+        <div className="mt-20">
+          <QuizzApp />
+        </div>
+      )}
+
     </>
   );
 };

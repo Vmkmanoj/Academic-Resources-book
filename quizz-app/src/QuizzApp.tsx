@@ -5,33 +5,29 @@ import { AdminPanel } from './components/AdminPanel';
 import { useQuiz } from './hooks/useQuiz';
 import { Settings } from 'lucide-react';
 
-function App() {
+export const QuizzApp = () => {
+  
   const { state, addQuestion, deleteQuestion, answerQuestion, restartQuiz } = useQuiz();
   const [showAdmin, setShowAdmin] = useState(false);
+
+  const [testname,SetTestname] = useState("Quiz Programming")
+
+  const [teststart,setTeststart] = useState(true);
+
 
   const currentQuestion = state.questions[state.currentQuestionIndex];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">React Quiz App</h1>
-          <button
-            onClick={() => setShowAdmin(!showAdmin)}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700"
-          >
-            <Settings size={20} />
-            {showAdmin ? 'Take Quiz' : 'Admin Panel'}
-          </button>
-        </div>
+<>
+{teststart ? (
+  <div className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-8 text-white">
+    <div className="max-w-4xl mx-auto shadow-lg rounded-lg bg-white text-gray-900">
+      <div className="flex justify-between items-center p-6 border-b border-gray-200">
+        <h1 className="text-4xl font-extrabold">{testname}</h1>
+      </div>
 
-        {showAdmin ? (
-          <AdminPanel
-            questions={state.questions}
-            onAddQuestion={addQuestion}
-            onDeleteQuestion={deleteQuestion}
-          />
-        ) : (
+      <div className="p-6">
+        {showAdmin ? null : (
           <div className="flex justify-center">
             {state.isFinished ? (
               <QuizResults
@@ -51,7 +47,13 @@ function App() {
         )}
       </div>
     </div>
+  </div>
+) : (
+  <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <h1 className="text-2xl font-bold text-gray-800">There is no test now</h1>
+  </div>
+)}
+    </>
   );
 }
 
-export default App;
