@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
-import { Question } from '../types/quiz';
 import { PlusCircle, Trash2 } from 'lucide-react';
 
-interface AdminPanelProps {
-  questions: Question[];
-  onAddQuestion: (question: Omit<Question, 'id'>) => void;
-  onDeleteQuestion: (id: string) => void;
-}
 
-export function AdminPanel({ questions, onAddQuestion, onDeleteQuestion }: AdminPanelProps) {
+export function Test({ questions, onAddQuestion, onDeleteQuestion }) {
   const [newQuestion, setNewQuestion] = useState({
     text: '',
     options: ['', '', '', ''],
     correctAnswer: 0,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onAddQuestion(newQuestion);
     setNewQuestion({
@@ -28,7 +22,7 @@ export function AdminPanel({ questions, onAddQuestion, onDeleteQuestion }: Admin
   return (
     <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6">Quiz Admin Panel</h2>
-      
+
       <form onSubmit={handleSubmit} className="mb-8">
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2">Question Text</label>

@@ -3,6 +3,9 @@ import { useState } from 'react'
 import { AdminDashboard } from './componant/admin/AdminDashboard'
 import { Usershow } from './componant/usershow/userShow'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Test } from './componant/Test/Test';
+import { AdminPanel } from './componant/admin/AdminPanel';
+
 
 
 
@@ -18,6 +21,8 @@ function App() {
       <Route path='/' element={  <AdminDashboard></AdminDashboard>}/>
 
       <Route path='/userShow' element={<Usershow></Usershow>}></Route>
+
+      <Route path='/Test' element={<AdminPanel></AdminPanel>}></Route>
 
       
     </Routes>

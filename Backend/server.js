@@ -10,7 +10,8 @@ const path = require('path');
 
 const UserModel = require("./Modules/user");
 const User = require("./Modules/user");
-const authRegiser = require('./Routes/register')
+const authRegiser = require('./Routes/register');
+const Question = require("./Modules/test");
 
 const PORT = 3000;
 const app = express();
@@ -201,6 +202,37 @@ catch(err){
 }
 
 })
+
+///adding qustions
+// const newQuestion = new Question({
+//   text: 'What is the capital of France?',
+//   options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
+//   correctAnswer: 2,
+// });
+
+// newQuestion.save();
+
+app.post('/Questionadd', async (req, res) => {
+  try {
+    const newQuestion = new Question({
+      text: 'What is the capital of France?',
+      options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
+      correctAnswer: 2,
+    });
+
+    // Save the new question to the database
+    await newQuestion.save();
+
+    // Send a success response back
+    res.status(201).json({ message: 'Question added successfully!', question: newQuestion });
+  } catch (error) {
+    // Handle any errors
+    res.status(500).json({ message: 'Error adding question', error: error.message });
+  }
+});
+
+
+
 
 
 

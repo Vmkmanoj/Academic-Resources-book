@@ -39,8 +39,8 @@ export const AdminDashboard = () => {
           <Menu.Item key="3" onClick={() => Navigate("/userShow")}>
             Users
           </Menu.Item>
-          <Menu.Item key="4" onClick={() => Navigate("/settings")}>
-            Settings
+          <Menu.Item key="4" onClick={() => Navigate("/Test")}>
+            Test
           </Menu.Item>
         </Menu>
       </Sider>
