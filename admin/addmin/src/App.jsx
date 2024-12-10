@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 // import './App.css'
-import { AdminDashboard } from './admin/AdminDashboard'
+import { AdminDashboard } from './componant/admin/AdminDashboard'
+import { Usershow } from './componant/usershow/userShow'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 
 
 function App() {
@@ -10,7 +12,18 @@ function App() {
 
   return (
     <>
-     <AdminDashboard></AdminDashboard>
+  <Router>
+    <Routes>
+
+      <Route path='/' element={  <AdminDashboard></AdminDashboard>}/>
+
+      <Route path='/userShow' element={<Usershow></Usershow>}></Route>
+
+      
+    </Routes>
+  </Router>
+
+   
     </>
   )
 }

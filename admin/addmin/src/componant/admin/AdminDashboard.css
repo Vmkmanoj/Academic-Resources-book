@@ -1,0 +1,132 @@
+/* General Layout Styles */
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
+.site-layout-background {
+  background: #fff;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  color: #001529;
+  margin-left: 20px;
+}
+
+.upload-button {
+  margin-right: 20px;
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+.sidebar-header {
+  background-color: #1e2a3a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.sidebar-links {
+  background-color: #2d3b45;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.sidebar-links .ant-menu-item {
+  color: white;
+  font-size: 18px;
+}
+
+.sidebar-links .ant-menu-item:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.sidebar-links .ant-menu-item-selected {
+  background-color: #4caf50 !important;
+}
+
+/* Stats Section */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.stat-card {
+  background: #4caf50;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .ant-card-body {
+  padding: 20px;
+}
+
+.stat-icon {
+  color: white;
+  font-size: 40px;
+}
+
+.stat-count {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Modal Styles */
+.upload-modal .ant-modal-content {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upload-modal .ant-modal-header {
+  background: #4caf50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.upload-modal .ant-modal-footer {
+  border-top: none;
+}
+
+/* Resource Management Section */
+.resource-management-section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f4f5f7;
+  border-radius: 10px;
+}
+
+.resource-management-section h3 {
+  color: #4caf50;
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-links .ant-menu-item {
+    font-size: 16px;
+  }
+
+  .dashboard-title {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,12 @@
+.usershow-container {
+    padding: 20px;
+    background-color: #f0f2f5; /* Light gray background for the page */
+    min-height: 100vh;
+  }
+  
+  .usershow-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  

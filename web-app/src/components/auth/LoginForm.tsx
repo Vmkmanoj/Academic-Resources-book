@@ -43,7 +43,7 @@ export const LoginForm = () => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userName", data.Username); // Store username
         console.log(data)
-        message.success("login succuss")
+        message.success(`Welcome ${data.Username}`);
   
         // Redirect user to home page
         navigate("/Home"); 

@@ -185,6 +185,25 @@ app.post('/update', upload.single('file'), (req, res) => {
 });
 
 
+
+
+
+app.get("/users",async (req,res)=>{
+
+
+  const user =await User.find()
+
+try{
+  res.json({Userdata: user})
+}
+catch(err){
+  res.json({message:err})
+}
+
+})
+
+
+
 // Start the server
 
 
