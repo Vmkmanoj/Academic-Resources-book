@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { QuizQuestion } from './components/QuizQuestion';
 import { QuizResults } from './components/QuizResults';
-import { AdminPanel } from './components/AdminPanel';
+// import { AdminPanel } from './components/AdminPanel';
 import { useQuiz } from './hooks/useQuiz';
 import { Settings } from 'lucide-react';
 

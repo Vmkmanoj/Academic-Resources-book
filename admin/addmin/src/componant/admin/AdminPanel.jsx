@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PlusCircle, Trash2 } from 'lucide-react';
 import { Input, Select, Button, Card, Space, Form } from 'antd';  // Importing Ant Design components
 import './AdminPanel.css';  // Import the external CSS file
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export function AdminPanel({ questions, onAddQuestion, onDeleteQuestion }) {
   const [newQuestion, setNewQuestion] = useState({
@@ -13,7 +13,7 @@ export function AdminPanel({ questions, onAddQuestion, onDeleteQuestion }) {
 
   const Navigate = useNavigate()
 
-  const handleSubmit = (value:{}) => {
+  const handleSubmit = (value) => {
     
 
 
