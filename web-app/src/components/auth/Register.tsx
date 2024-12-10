@@ -1,37 +1,52 @@
 
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input, message, Select } from "antd";
+import Password from "antd/es/input/Password";
 import { GraduationCap } from 'lucide-react';
+import { useState } from "react";
 
 
 export const Register = () => {
 
+  const [register ,setRegister] = useState(false)
 
-  const handleRegister = async (value: { Username: string; name: string; password: string; department: string }) => {
+
+  const handleRegister = async (value: { 
+    Username: string; 
+    name: string; 
+    password: string; 
+    department: string; 
+    confirmPassword: string; 
+  }) => {
+
     try {
-      const response = await fetch("http://localhost:3000/Register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Fixed typo in Content-Type
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: value.Username,
+          Username: value.Username,
           name: value.name,
           password: value.password,
           department: value.department,
+          confirmPassword: value.confirmPassword, // Include if needed
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
+      console.log(value.Username)
+  
       const data = await response.json();
-      console.log("Registration successful:", data);
-    } catch (error) {
-      console.error("Registration failed:", error);
-
+      console.log("Registration successful:", data.message);
+      setRegister(data.success);
+      if(response.ok){
+        message.success("Registration successfull...");
+      }
+   
+    } catch (error: any) {
+      console.error("Registration failed:", error.message);
     }
   };
+  
 
 
 
@@ -167,8 +182,11 @@ export const Register = () => {
               </Button>
             </Form.Item>
           </Form>
+          {register && <p style={{ color: 'green' }}>register success fully</p>}
         </div>
       </div>
+
+    
 
 
     </>

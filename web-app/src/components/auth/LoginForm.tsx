@@ -35,14 +35,15 @@ export const LoginForm = () => {
       });
 
       const data = await response.json();
-      console.log(data.userName);
+      console.log(data.Username);
    
   
       if (data.success) {
         // Store the JWT token and username in localStorage
         localStorage.setItem("token", data.token);
-        localStorage.setItem("userName", data.userName); // Store username
+        localStorage.setItem("userName", data.Username); // Store username
         console.log(data)
+        message.success("login succuss")
   
         // Redirect user to home page
         navigate("/Home"); 

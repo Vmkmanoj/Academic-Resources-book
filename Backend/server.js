@@ -16,7 +16,8 @@ const PORT = 3000;
 const app = express();
 
 app.use(cors());
-app.use(body_parse.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect("mongodb+srv://vmkmano13:mano@kongu.lnpx7.mongodb.net/?retryWrites=true&w=majority&appName=kongu")
   .then(() => console.log("MongoDB connected"))
@@ -25,7 +26,7 @@ mongoose.connect("mongodb+srv://vmkmano13:mano@kongu.lnpx7.mongodb.net/?retryWri
 // const Username = ()=>{
 
 //   const user = new User({UserName:"Rohini",name:"Rohini24MCR@kongu.edu",password:"01-09-2003"},
-                          
+
 //   )
 
 //   user.save()
@@ -34,8 +35,44 @@ mongoose.connect("mongodb+srv://vmkmano13:mano@kongu.lnpx7.mongodb.net/?retryWri
 // }
 
 // Username();
+app.post('/register', async (req, res) => {
+  try {
+    const { Username, name, password, department, confirmPassword } = req.body;
 
-app.use('/api/Register',authRegiser)
+
+    console.log(Username)
+
+    // Check if req.body exists and fields are not undefined
+    if (!req.body || !Username || !name || !password || !department || !confirmPassword) {
+      return res.status(400).json({ message: 'All fields are required', success: false });
+    }
+
+    // Validate fields
+    if (!Username.trim() || !name.trim() || !password.trim() || !department.trim() || !confirmPassword.trim()) {
+      return res.status(400).json({ message: 'All fields must be non-empty', success: false });
+    }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: 'Passwords do not match', success: false });
+    }
+
+    const user = new User({ Username, name, password, department })
+
+    user.save();
+
+    if(user){
+      res.json({message:"Register succuss full", success : true})
+    }
+
+   
+
+    // Rest of your logic...
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).json({ message: 'Internal server error', success: false });
+  }
+});
+
 
 app.post('/Login', async (req, res) => {
   try {
@@ -59,9 +96,11 @@ app.post('/Login', async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials", success: false });
     }
 
+    console.log(user.Username);
+
     // Generate JWT token
     const token = jwt.sign(
-      { userId: user._id, name: user.name, Username: user.UserName, role: user.role },
+      { userId: user._id, name: user.name, Username: user.Username, role: user.role },
       process.env.JWT_SECRET, // Secret key from .env file
       { expiresIn: '1h' } // Token expires in 1 hour
     );
@@ -71,14 +110,14 @@ app.post('/Login', async (req, res) => {
       message: "Login successful",
       success: true,
       token, // Send JWT token
-      userName: user.UserName // Include UserName in response
+      Username: user.Username // Include UserName in response
     });
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "Internal server error", success: false });
   }
 });
-  
+
 
 // Middleware to verify the JWT token on protected routes
 const verifyToken = (req, res, next) => {
@@ -101,57 +140,57 @@ const verifyToken = (req, res, next) => {
 
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      // Set the folder where files will be uploaded
-      cb(null, '.uploads/');
-    },
-    filename: (req, file, cb) => {
-      // Set the file name with original name and current timestamp
-      cb(null, Date.now() + path.extname(file.originalname));
-    },
-  });
-  
-  // Initialize multer with the storage engine
+  destination: (req, file, cb) => {
+    // Set the folder where files will be uploaded
+    cb(null, '.uploads/');
+  },
+  filename: (req, file, cb) => {
+    // Set the file name with original name and current timestamp
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+// Initialize multer with the storage engine
 const upload = multer({ storage: storage });
 
 app.post('/update', upload.single('file'), (req, res) => {
-    try {
-      // Log incoming data
-      console.log('Request Body:', req.body);  // Log form fields
-      console.log('Uploaded File:', req.file); // Log uploaded file details
-  
-      const { title, type, subject, semester, department } = req.body;
-      const file = req.file;
-  
-      if (!file) {
-        console.log("Error: No file uploaded");
-        return res.status(400).json({ message: 'File is required.' });
-      }
-  
-      // Additional checks and processing
-      console.log('Title:', title);
-      console.log('Type:', type);
-      console.log('Subject:', subject);
-      console.log('Semester:', semester);
-      console.log('Department:', department);
-  
-      // Simulate a save to the database or further processing here
-  
-      // Success response
-      return res.status(200).json({ message: 'Resource uploaded successfully!', file: file.filename });
-    } catch (error) {
-      console.error("Error during upload:", error);
-      return res.status(500).json({ message: "Internal server error", error: error.message });
+  try {
+    // Log incoming data
+    console.log('Request Body:', req.body);  // Log form fields
+    console.log('Uploaded File:', req.file); // Log uploaded file details
+
+    const { title, type, subject, semester, department } = req.body;
+    const file = req.file;
+
+    if (!file) {
+      console.log("Error: No file uploaded");
+      return res.status(400).json({ message: 'File is required.' });
     }
-  });
-  
-  
-  // Start the server
+
+    // Additional checks and processing
+    console.log('Title:', title);
+    console.log('Type:', type);
+    console.log('Subject:', subject);
+    console.log('Semester:', semester);
+    console.log('Department:', department);
+
+    // Simulate a save to the database or further processing here
+
+    // Success response
+    return res.status(200).json({ message: 'Resource uploaded successfully!', file: file.filename });
+  } catch (error) {
+    console.error("Error during upload:", error);
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+});
 
 
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
+// Start the server
+
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 
 
