@@ -1,6 +1,7 @@
 import React from 'react';
 import { Trophy } from 'lucide-react';
 import Confetti from "react-confetti"
+import { useWindowSize } from 'react-use';
 
 interface QuizResultsProps {
   score: number;
@@ -11,9 +12,11 @@ interface QuizResultsProps {
 export function QuizResults({ score, totalQuestions, onRestart }: QuizResultsProps) {
   const percentage = (score / totalQuestions) * 100;
 
+  const { width, height } = useWindowSize();
+
   return (
     <>
-    <Confetti></Confetti>
+    <Confetti height={height} width={width}></Confetti>
      <div className="h-96 flex items-center justify-center bg-gradient-to-b from-indigo-100 via-white to-indigo-50">
       <div className="w-full max-w-lg p-8 bg-white rounded-3xl shadow-xl border border-gray-200 text-center transform transition-transform hover:scale-105">
         <div className="flex justify-center items-center mb-6">
