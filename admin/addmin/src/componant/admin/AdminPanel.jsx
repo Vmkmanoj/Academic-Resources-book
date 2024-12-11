@@ -1,82 +1,97 @@
 import React, { useState } from 'react';
-import { PlusCircle, Trash2 } from 'lucide-react';
-import { Input, Select, Button, Card, Space, Form } from 'antd';  // Importing Ant Design components
-import './AdminPanel.css';  // Import the external CSS file
+import { PlusCircle } from 'lucide-react';
+import { Input, Select, Button, Form, message } from 'antd';
+import './AdminPanel.css';
 import { useNavigate } from 'react-router-dom';
 
-export function AdminPanel({ questions, onAddQuestion, onDeleteQuestion }) {
-  const [newQuestion, setNewQuestion] = useState({
+export function AdminPanel() {
+  const [newquestion, setNewQuestion] = useState({
     text: '',
     options: ['', '', '', ''],
     correctAnswer: 0,
   });
 
-  const Navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = (value) => {
-    
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/Questionadd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newquestion),
+      });
 
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
 
+      const result = await response.json();
+      console.log("Question added successfully:", result);
+      message.success("Question added");
 
-    onAddQuestion(newQuestion);
-    setNewQuestion({
-      text: '',
-      options: ['', '', '', ''],
-      correctAnswer: 0,
-    });
+      setNewQuestion({
+        text: '',
+        options: ['', '', '', ''],
+        correctAnswer: 0,
+      });
+    } catch (error) {
+      console.error("Failed to add question:", error.message);
+    }
   };
 
   return (
     <div className="admin-panel-container">
       <h2 className="admin-panel-title">Quiz Admin Panel</h2>
-      <Button onClick={()=>Navigate("/")}>AdminPanel</Button>
+      <Button onClick={() => navigate("/")}>AdminPanel</Button>
 
       <Form onFinish={handleSubmit} className="question-form">
-        <div className="form-group">
-          <label className="form-label">Question Text</label>
+        <Form.Item
+          label="Question Text"
+          rules={[{ required: true, message: 'Please enter the question text.' }]}
+        >
           <Input
-            type="text"
-            value={newQuestion.text}
-            onChange={(e) => setNewQuestion({ ...newQuestion, text: e.target.value })}
+            value={newquestion.text}
+            onChange={(e) => setNewQuestion({ ...newquestion, text: e.target.value })}
             className="form-input"
-            required
             placeholder="Enter your question here"
           />
-        </div>
+        </Form.Item>
 
-        <div className="form-group">
-          <label className="form-label">Options</label>
-          {newQuestion.options.map((option, index) => (
+        <Form.Item label="Options">
+          {newquestion.options.map((option, index) => (
             <Input
               key={index}
-              type="text"
               value={option}
               onChange={(e) => {
-                const newOptions = [...newQuestion.options];
+                const newOptions = [...newquestion.options];
                 newOptions[index] = e.target.value;
-                setNewQuestion({ ...newQuestion, options: newOptions });
+                setNewQuestion({ ...newquestion, options: newOptions });
               }}
               className="form-input option-input"
               placeholder={`Option ${index + 1}`}
-              required
             />
           ))}
-        </div>
+        </Form.Item>
 
-        <div className="form-group">
-          <label className="form-label">Correct Answer</label>
-          <Select 
-            value={newQuestion.correctAnswer}
-            onChange={(value) => setNewQuestion({ ...newQuestion, correctAnswer: value })}
+        <Form.Item
+          label="Correct Answer"
+          rules={[{ required: true, message: 'Please select the correct answer.' }]}
+        >
+          <Select
+            value={newquestion.correctAnswer}
+            onChange={(value) => setNewQuestion({ ...newquestion, correctAnswer: value })}
             className="form-input"
+            placeholder="Select the correct answer"
           >
-            {newQuestion.options.map((_, index) => (
+            {newquestion.options.map((_, index) => (
               <Select.Option key={index} value={index}>
-                Option {index + 1} 
+                Option {index + 1}
               </Select.Option>
             ))}
           </Select>
-        </div>
+        </Form.Item>
 
         <Button
           type="primary"

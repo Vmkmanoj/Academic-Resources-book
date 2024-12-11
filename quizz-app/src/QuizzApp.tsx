@@ -7,7 +7,8 @@ import { Settings } from 'lucide-react';
 
 export const QuizzApp = () => {
   
-  const { state, addQuestion, deleteQuestion, answerQuestion, restartQuiz } = useQuiz();
+  const { state, answerQuestion, restartQuiz} = useQuiz();
+
   const [showAdmin, setShowAdmin] = useState(false);
 
   const [testname,SetTestname] = useState("Quiz Programming")

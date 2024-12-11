@@ -213,11 +213,14 @@ catch(err){
 // newQuestion.save();
 
 app.post('/Questionadd', async (req, res) => {
+
+  const { text, options, correctAnswer } = req.body;
+
   try {
     const newQuestion = new Question({
-      text: 'What is the capital of France?',
-      options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-      correctAnswer: 2,
+      text,
+      options,
+      correctAnswer,
     });
 
     // Save the new question to the database
@@ -231,6 +234,26 @@ app.post('/Questionadd', async (req, res) => {
   }
 });
 
+
+
+
+app.get("/getquestion", async (req, res) => {
+  try {
+    // Fetch questions from the database
+    const questions = await Question.find();
+
+    // Send questions as a JSON response
+    res.status(200).json(questions);
+  } catch (err) {
+    console.error("Error fetching questions:", err);
+
+    // Send an error response
+    res.status(500).json({
+      message: "Failed to fetch questions",
+      error: err.message,
+    });
+  }
+});
 
 
 
