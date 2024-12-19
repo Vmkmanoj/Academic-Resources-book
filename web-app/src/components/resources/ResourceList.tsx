@@ -9,6 +9,8 @@ import { MCAData } from '../Dummydata/stubject'; // Ensure MCAData is correctly 
 import { EyeOutlined, FilePdfFilled } from '@ant-design/icons';
 import { QuizzApp } from "@kongu/quizz-app";
 
+import { Feedback } from '../FeedBack/Feedback';
+
 const ResourceList = () => {
   const [path, setPath] = React.useState<string>('Subject'); // State for path
   const [section, setSection] = React.useState<string>('MCA-1'); // State for MCA section
@@ -82,6 +84,12 @@ const ResourceList = () => {
       {path === 'Test' && (
         <div className="mt-20">
           <QuizzApp />
+        </div>
+      )}
+
+        {path === 'FeedBack' && (
+        <div className="mt-20">
+          <Feedback></Feedback>
         </div>
       )}
 

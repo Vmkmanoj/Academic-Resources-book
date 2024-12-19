@@ -5,7 +5,7 @@ import "./Recommednation.css";
 const justifyOptions = [
   'Subject',
   'Youtube',
-  'Senior',
+  'FeedBack',
   'Course',
   'Test',
 ];

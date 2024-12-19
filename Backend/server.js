@@ -9,9 +9,12 @@ const multer = require('multer');
 const path = require('path');
 
 const UserModel = require("./Modules/user");
+const FeedBackdetils = require("./Modules/Feedback")
 const User = require("./Modules/user");
 const authRegiser = require('./Routes/register');
 const Question = require("./Modules/test");
+const FeedBackDetails = require("./Modules/Feedback");
+const { message } = require("antd");
 
 const PORT = 3000;
 const app = express();
@@ -252,6 +255,48 @@ app.get("/getquestion", async (req, res) => {
       message: "Failed to fetch questions",
       error: err.message,
     });
+  }
+});
+
+
+
+app.post("/Feedback", async (req, res) => {
+  const { name, Feedback, Rate } = req.body;
+
+  try {
+ 
+    const feed = new FeedBackDetails({ name, Feedback, Rate });
+
+
+    await feed.save();
+
+    
+    res.status(201).json({ message: "Feedback submitted successfully", success: true });
+  } catch (err) {
+    console.error("Error saving feedback:", err);
+
+    // Send error response
+    res.status(500).json({ message: "Failed to submit feedback", success: false });
+  }
+});
+
+app.get("/getfeedback", async (req, res) => {
+  try {
+    // Retrieve all feedback details from the database
+    const feedbacks = await FeedBackDetails.find();
+
+    // Check if feedbacks exist
+    if (!feedbacks || feedbacks.length === 0) {
+      return res.status(404).json({ message: "No feedback found", success: false });
+    }
+
+    // Send the feedback data
+    res.status(200).json({ data: feedbacks, success: true });
+  } catch (err) {
+    console.error("Error fetching feedback:", err);
+
+    // Send error response
+    res.status(500).json({ message: "Failed to retrieve feedback", success: false });
   }
 });
 
