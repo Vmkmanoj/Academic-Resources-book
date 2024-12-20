@@ -16,6 +16,8 @@ const Question = require("./Modules/test");
 const FeedBackDetails = require("./Modules/Feedback");
 const { message } = require("antd");
 
+const crouseSchema = require("./Modules/youtube")
+
 const PORT = 3000;
 const app = express();
 
@@ -302,6 +304,63 @@ app.get("/getfeedback", async (req, res) => {
 
 
 
+
+app.post("/CrousePost",async (req,res)=>{
+
+
+  const {title,channel,url,duration,rating,description,views,level,imageUrl} = req.body 
+
+try{
+
+
+  const Coursepost = new crouseSchema({
+    title,
+    channel,
+    url,
+    duration,
+    rating,
+    description,
+    views,
+    level,
+    imageUrl
+  })
+
+  Coursepost.save()
+
+  res.status(201).json({message:"Added submit feedback",success:true})
+}catch(err){
+
+  res.json({message:err,success :false})
+
+}
+  
+
+
+})
+
+
+app.get("/GetCrousePost",async (req,res)=>{
+
+try{
+  const getCrousePost =await crouseSchema.find()
+
+  if (!getCrousePost || getCrousePost.length === 0) {
+    return res.status(404).json({ message: "No feedback found", success: false });
+  }
+
+  res.status(200).json({data:getCrousePost,success:true})
+}catch{err}{
+
+
+  res.json({message:"filed to fecth error",success:false})
+
+}
+
+
+
+
+
+})
 
 
 // Start the server

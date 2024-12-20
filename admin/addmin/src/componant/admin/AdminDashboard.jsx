@@ -33,7 +33,7 @@ export const AdminDashboard = () => {
           <Menu.Item key="1" onClick={() => Navigate("/")}>
             Dashboard
           </Menu.Item>
-          <Menu.Item key="2" onClick={() => Navigate("/resources")}>
+          <Menu.Item key="2" onClick={() => Navigate("/Resource")}>
             Resources
           </Menu.Item>
           <Menu.Item key="3" onClick={() => Navigate("/userShow")}>

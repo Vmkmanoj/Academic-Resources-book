@@ -5,7 +5,7 @@ import { Usershow } from './componant/usershow/userShow'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Test } from './componant/Test/Test';
 import { AdminPanel } from './componant/admin/AdminPanel';
-
+import Resource from './componant/Resources/Resource';
 
 
 
@@ -23,6 +23,8 @@ function App() {
       <Route path='/userShow' element={<Usershow></Usershow>}></Route>
 
       <Route path='/Test' element={<AdminPanel></AdminPanel>}></Route>
+
+      <Route path='/Resource' element={<Resource></Resource>}></Route>
 
       
     </Routes>
