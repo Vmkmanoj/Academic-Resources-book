@@ -339,28 +339,31 @@ try{
 })
 
 
-app.get("/GetCrousePost",async (req,res)=>{
+app.get("/GetCrousePost", async (req, res) => {
+  try {
+    const getCrousePost = await crouseSchema.find();
 
-try{
-  const getCrousePost =await crouseSchema.find()
+    if (!getCrousePost || getCrousePost.length === 0) {
+      return res.status(404).json({ message: "No feedback found", success: false });
+    }
 
-  if (!getCrousePost || getCrousePost.length === 0) {
-    return res.status(404).json({ message: "No feedback found", success: false });
+    // Send the response and stop further execution
+    return res.status(200).json({ data: getCrousePost, success: true });
+  } catch (err) {
+    console.error("Error fetching courses:", err);
+
+    // Ensure no further code runs after sending the response
+    if (!res.headersSent) {
+      return res.status(500).json({ message: "Failed to fetch courses", success: false });
+    }
   }
-
-  res.status(200).json({data:getCrousePost,success:true})
-}catch{err}{
-
-
-  res.json({message:"filed to fecth error",success:false})
-
-}
+});
 
 
 
 
 
-})
+
 
 
 // Start the server
