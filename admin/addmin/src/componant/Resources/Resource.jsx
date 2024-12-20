@@ -2,11 +2,14 @@ import React from 'react';
 import { Form, Input, Select, Upload, Button, Rate, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import './Resource.css';
+import { useNavigate } from 'react-router-dom';
 
 const { TextArea } = Input;
 
 const Resource = () => {
   const [form] = Form.useForm();
+
+  const Navigate = useNavigate();
 
 
 
@@ -148,12 +151,16 @@ const Resource = () => {
           
          
         </div>
+        <div className='' style={{display:"flex",justifyContent:"space-between"}}>
+
+        <Button onClick={()=>Navigate("/")}>Back</Button>
 
         <Form.Item>
           <Button type="primary" htmlType="submit" className="submit-btn">
             Submit
           </Button>
         </Form.Item>
+        </div>
       </Form>
     </div>
   );

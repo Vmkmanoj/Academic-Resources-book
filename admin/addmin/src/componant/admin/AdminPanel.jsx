@@ -44,7 +44,7 @@ export function AdminPanel() {
   return (
     <div className="admin-panel-container">
       <h2 className="admin-panel-title">Quiz Admin Panel</h2>
-      <Button onClick={() => navigate("/")}>AdminPanel</Button>
+     
 
       <Form onFinish={handleSubmit} className="question-form">
         <Form.Item
@@ -93,14 +93,23 @@ export function AdminPanel() {
           </Select>
         </Form.Item>
 
-        <Button
-          type="primary"
-          htmlType="submit"
-          icon={<PlusCircle size={20} />}
-          className="submit-button"
-        >
-          Add Question
-        </Button>
+<div className='' style={{display:"flex",justifyContent:"space-between"}}>
+
+<Button onClick={() => navigate("/")}>back</Button>
+
+
+<Button
+  type="primary"
+  htmlType="submit"
+  icon={<PlusCircle size={20} />}
+  className="submit-button"
+>
+  Add Question
+</Button>
+
+
+</div>
+       
       </Form>
     </div>
   );
