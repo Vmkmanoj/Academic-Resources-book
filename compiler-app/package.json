@@ -1,18 +1,27 @@
 {
-  "name": "complier-app",
-  "private": true,
+  "name": "@kongu/compiler-app",
   "version": "0.0.0",
-  "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": "dist/esm/index.js",
+      "require": "dist/cjs/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "tsc --module commonjs --target es5 --jsx react --declaration --outDir dist/cjs && tsc --module esnext --target es5 --jsx react --declaration --outDir dist/esm"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
-    "antd": "^5.22.1",
+    "antd": "^5.22.5",
     "axios": "^1.7.7",
+    "rc-picker": "^4.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -26,6 +35,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
+    "typescript": "^5.7.2",
     "vite": "^5.4.10"
   }
 }

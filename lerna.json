@@ -8,6 +8,7 @@
     },
     "packages": [
         "web-app",
-        "quizz-app"
+        "quizz-app",
+        "compiler-app"
     ]
 }

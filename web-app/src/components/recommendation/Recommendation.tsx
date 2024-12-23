@@ -6,6 +6,7 @@ const justifyOptions = [
   'Subject',
   'Youtube',
   'FeedBack',
+  'Online Compiler',
   'Course',
   'Test',
 ];
