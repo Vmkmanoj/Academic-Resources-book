@@ -8,7 +8,7 @@ import "../src/App.css"
 import Output from "./Components/output";
 import { useState } from "react";
 
-export const App=()=> {
+function App() {
 
   const [langage,setLangage] = useState("javascript");
 
@@ -38,3 +38,4 @@ export const App=()=> {
   )
 }
 
+export default App

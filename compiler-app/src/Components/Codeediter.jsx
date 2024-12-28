@@ -2,7 +2,7 @@ import { Editor } from "@monaco-editor/react";
 import { Layout, Select, Button, Row, Col } from "antd";
 import { useRef, useState } from "react";
 import { CODE_SNIPPETS } from "./language";
-import "../Components/Codeediter.css";
+// import "../Components/Codeediter.css";
 import Output from "./output";
 
 const { Header } = Layout;
