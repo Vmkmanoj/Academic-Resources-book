@@ -1,15 +1,28 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "jsx": "react-jsx",
-    "declaration": true,
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "allowJs": true,
-    "strict": true,
-    "esModuleInterop": true
+    "module": "ESNext",
+    "jsx": "react",
+    "moduleResolution": "node", // For Node.js-style module resolution
+    "declaration": true, // Generate declaration files
+    "declarationDir": "./dist", // Output for declaration files
+    "outDir": "./dist", // Output for compiled JavaScript files
+    "esModuleInterop": true, // For better compatibility with CommonJS and ESM modules
+    "skipLibCheck": true, // To speed up build (can be turned off if strict checking is needed)
+    "sourceMap": true,
+    "typeRoots": [
+      "./typings",
+      "./node_modules/@types"
+    ],
+    "target": "ES2022", // or "ES2015", "ES2020"
+    "lib": [
+      "ES2022",
+      "DOM"
+    ], // Add ES6 to the lib option
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ], // Include all source files
+  "exclude": [
+    "node_modules"
+  ] // Exclude node_modules folder
 }

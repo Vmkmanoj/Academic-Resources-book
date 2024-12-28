@@ -14,6 +14,7 @@ export const QuizzApp = () => {
   const [testname,SetTestname] = useState("Quiz Programming")
 
   const [teststart,setTeststart] = useState(true);
+  console.log("hello world");
 
 
   const currentQuestion = state.questions[state.currentQuestionIndex];

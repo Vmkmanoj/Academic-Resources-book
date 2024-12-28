@@ -15,7 +15,9 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --module commonjs --target es5 --jsx react --declaration --outDir dist/cjs && tsc --module esnext --target es5 --jsx react --declaration --outDir dist/esm"
+    "build": "tsc --module commonjs --target es5 --jsx react --declaration --outDir dist/cjs && tsc --module esnext --target es5 --jsx react --declaration --outDir dist/esm",
+    "watch": "tsc --watch --preserveWatchOutput",
+    "dev-watch": "concurrently \"npm run dev\" \"npm run watch\""
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
