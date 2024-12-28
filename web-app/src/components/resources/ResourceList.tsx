@@ -8,7 +8,7 @@ import "./ResourceLisst.css"
 import { MCAData } from '../Dummydata/stubject'; // Ensure MCAData is correctly imported
 import { EyeOutlined, FilePdfFilled } from '@ant-design/icons';
 import { QuizzApp } from "@kongu/quizz-app";
-
+import { CompilerApp } from "@kongu/compiler-app";
 import { Feedback } from '../FeedBack/Feedback';
 
 
@@ -89,13 +89,17 @@ const ResourceList = () => {
         </div>
       )}
 
-        {path === 'FeedBack' && (
+      {path === 'FeedBack' && (
         <div className="mt-20">
           <Feedback></Feedback>
         </div>
       )}
 
-   
+      {path === 'Online Compiler' && (
+        <div className="mt-20">
+          <CompilerApp></CompilerApp>
+        </div>
+      )}
 
     </>
   );
